@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: pottery
+
+  datasource:
+    db1:
+      url: jdbc:mysql://localhost:3306/pottery
+      username: root
+      password: 12345678
+      driver-class-name: com.mysql.jdbc.Driver
+
+    data:
+      mongodb:
+        uri: mongodb://localhost:27017/pottery
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+    generate-ddl: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 762978610620-sl0854e4l0u72geruu4mp4go0jmqsij7.apps.googleusercontent.com
+            clientSecret: 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
+            scope:
+              - email
+              - profile
+          facebook:
+            client-id: 747758913872401
+            client-secret: 46b1913b478acd1c56e3584800f62b7f
+      provider:
+        google:
+          authorizationUri: https://accounts.google.com/o/oauth2/auth
+          tokenUri: https://accounts.google.com/o/oauth2/token
+          userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
+          userNameAttributeName: sub
+frontend:
+  url:  http://localhost:3000
