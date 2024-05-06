@@ -23,8 +23,6 @@ public class IPAddressFilter implements Filter {
         // Call your service method to save IP address and URI
         if (uri != null){
             historyService.saveHistory(ipAddress, uri);
-            System.out.println(ipAddress);
-            System.out.println(uri);
         }
 
         // Proceed with the filter chain
