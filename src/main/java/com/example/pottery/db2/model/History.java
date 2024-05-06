@@ -21,4 +21,5 @@ public class History {
     private String ipAddress;
     private String sqlQuery;
     private Long accountId;
+    private String uri;
 }

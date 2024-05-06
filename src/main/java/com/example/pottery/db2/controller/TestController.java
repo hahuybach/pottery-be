@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -33,10 +34,6 @@ public class TestController {
             e.printStackTrace();
             return "Failed to connect to MongoDB: " + e.getMessage();
         }
-    }
-    @PostMapping("/save-history")
-    public ResponseEntity<History> saveHistory(){
-        return ResponseEntity.ok(historyService.saveHistory()) ;
     }
     @GetMapping("/get-all-history")
     public ResponseEntity<List<History>> getListHistories(){

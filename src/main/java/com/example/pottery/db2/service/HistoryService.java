@@ -18,7 +18,7 @@ public class HistoryService {
         System.out.println(historyRepository.findAll());
         return historyRepository.findAll();
     }
-    public History saveHistory(){
-        return historyRepository.save(History.builder().ipAddress("test ip address").sqlQuery("").accountId(1L).build());
+    public History saveHistory(String ipAddress,String uri){
+        return historyRepository.save(History.builder().ipAddress(ipAddress).uri(uri).accountId(1L).build());
     }
 }
