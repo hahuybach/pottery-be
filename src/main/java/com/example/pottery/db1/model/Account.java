@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -34,15 +35,19 @@ public class Account {
     @NotNull(message = "is active is null")
     private Boolean isActive;
 
-    @Getter
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "account_id")
-    @MapsId
-    private User user;
+    @Column(name = "full_name")
+    private String fullName;
+    @Temporal(TemporalType.DATE)
+    private LocalDate dob;
+    private String phoneNumber;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
     @Builder.Default
     private Set<AccountRole> accountRoles = new HashSet<>();
+    @OneToMany(mappedBy = "account")
+    private Set<Post> posts;
+    @OneToMany(mappedBy = "account")
+    private Set<Feedback> feedbacks;
 }
 

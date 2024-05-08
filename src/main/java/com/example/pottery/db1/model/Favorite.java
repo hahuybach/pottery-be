@@ -22,9 +22,10 @@ public class Favorite {
     private Account account;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @MapsId("productId")
-    @JoinColumn(name = "product_id")
+    @MapsId("productDetailId")
+    @JoinColumn(name = "product_detail_id")
     @JsonIgnore
-    private Product product;
+    private ProductDetail productDetail;
+    private Integer quantity;
 
 }

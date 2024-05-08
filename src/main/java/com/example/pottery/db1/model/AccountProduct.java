@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class AccountProduct implements Serializable {
     @Column(name = "account_id")
     private Long accountId;
-    @Column(name = "product_id")
-    private Long productId;
+    @Column(name = "product_detail_id")
+    private Long productDetailId;
 
 }

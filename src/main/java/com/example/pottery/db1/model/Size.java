@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
@@ -13,13 +14,17 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category {
+public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
-    private Long categoryId;
-    @Column(name = "category_name",columnDefinition = "NVARCHAR(255)")
-    private String categoryName;
-    @OneToMany(mappedBy = "category")
+    private Long id;
+    @Column(name = "size_width")
+    private Double sizeWidth;
+    @Column(name = "size_height")
+    private Double sizeHeight;
+    @Column(name = "size_depth")
+    private Double sizeDepth;
+    @OneToMany(mappedBy = "size")
     private Set<Product> products;
+
 }

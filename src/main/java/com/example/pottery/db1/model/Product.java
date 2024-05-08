@@ -15,6 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private Long productId;
     @Column(name = "product_name")
@@ -26,5 +27,16 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private Set<OrderItem> orderItems;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private Category category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_material_id")
+    private Material material;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_size_id")
+    private Size size;
+    @Column(name = "product_description")
+    private String productDescription;
+    @OneToMany(mappedBy = "product")
+    private Set<Feedback> feedbacks;
 }
