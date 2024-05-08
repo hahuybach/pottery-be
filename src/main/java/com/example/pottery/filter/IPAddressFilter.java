@@ -1,6 +1,6 @@
 package com.example.pottery.filter;
 
-import com.example.pottery.db2.service.HistoryService;
+import com.example.pottery.db2.serviceImpl.HistoryServiceImpl;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -8,9 +8,9 @@ import lombok.RequiredArgsConstructor;
 import java.io.IOException;
 @RequiredArgsConstructor
 public class IPAddressFilter implements Filter {
-    private HistoryService historyService;
-    public IPAddressFilter(HistoryService historyService){
-        this.historyService = historyService;
+    private HistoryServiceImpl historyServiceImpl;
+    public IPAddressFilter(HistoryServiceImpl historyServiceImpl){
+        this.historyServiceImpl = historyServiceImpl;
     }
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -22,7 +22,7 @@ public class IPAddressFilter implements Filter {
 
         // Call your service method to save IP address and URI
         if (uri != null){
-            historyService.saveHistory(ipAddress, uri);
+            historyServiceImpl.saveHistory(ipAddress, uri);
         }
 
         // Proceed with the filter chain

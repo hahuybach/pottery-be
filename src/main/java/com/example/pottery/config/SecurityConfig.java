@@ -1,7 +1,6 @@
 package com.example.pottery.config;
 
-import com.example.pottery.db2.service.HistoryService;
-import com.example.pottery.filter.GoogleTokenFilter;
+import com.example.pottery.db2.serviceImpl.HistoryServiceImpl;
 import com.example.pottery.filter.IPAddressFilter;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
@@ -15,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -40,12 +38,12 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig{
     @Autowired
-    private HistoryService historyService;
+    private HistoryServiceImpl historyServiceImpl;
 //    @Autowired
 //    private GoogleTokenFilter googleTokenFilter;
     @Bean
     public Filter ipAddressFilter() {
-        return new IPAddressFilter(historyService);
+        return new IPAddressFilter(historyServiceImpl);
     }
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
